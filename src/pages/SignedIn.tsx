@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ReservationForm } from "../components/ReservationForm";
 import { ProfilePage } from "./ProfilePage";
 
 export function SignedIn({ userOn, setUserOn }: any) {
@@ -13,7 +14,7 @@ export function SignedIn({ userOn, setUserOn }: any) {
 
   return (
     <Routes>
-      <Route index element={<ProfilePage userOn={userOn} />} />
+      <Route path="/reserve" element={<ReservationForm room={rooms[0]} />} />
     </Routes>
   );
 }
