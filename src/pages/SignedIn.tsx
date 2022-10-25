@@ -1,10 +1,21 @@
-import { Route, Routes } from "react-router-dom";
-import { Home } from "./Home";
 
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { ProfilePage } from "./ProfilePage";
+import { Home } from "./Home";
 export function SignedIn({ userOn, setUserOn }: any) {
-  return <>
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/get-all-rooms")
+      .then((resp) => resp.json())
+      .then((rooms) => setRooms(rooms));
+  }, []);
+
+  return (
     <Routes>
+      <Route index element={<ProfilePage userOn={userOn} />} />
       <Route index element={<Home /> } />
-   </Routes>
-  </>;
+    </Routes>
+  );
 }
