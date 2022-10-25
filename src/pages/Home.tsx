@@ -48,6 +48,7 @@ export function Home (setUserOn: any) {
                         <p>{room.reviewsNr}</p>
                         <p>{room.review}</p>
                         <p>{room.images}</p>
+
                         </div>
                 ))}
             </div>
