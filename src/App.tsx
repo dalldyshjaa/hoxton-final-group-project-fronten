@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { SignedIn } from "./pages/SignedIn";
 import { SignedOut } from "./pages/SignedOut";
+import { Route, Routes } from "react-router-dom";
+
 
 function App() {
   const [token, setToken] = useState(localStorage.token);
@@ -31,7 +33,11 @@ function App() {
         <SignedIn userOn={userOn} setUserOn={setUserOn} />
       ) : (
         <SignedOut setUserOn={setUserOn} />
-      )}
+       )}
+
+       <Routes>
+          <Route path="/home" element={<SignedIn />} />
+       </Routes>
     </div>
   );
 }
