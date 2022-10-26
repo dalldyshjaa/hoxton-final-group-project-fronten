@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import { Star } from "../Icons";
 
 import "../styles/Home.css"
@@ -21,12 +22,12 @@ export function Home(setUserOn: any) {
 
     const [rooms, setRooms] = useState([]);
 
-    useEffect (() => {
+    useEffect(() => {
         fetch("http://localhost:5000/get-all-rooms")
-        .then((resp) => resp.json())
-        .then((rooms) => {
-            setRooms(rooms);
-        });
+            .then((resp) => resp.json())
+            .then((rooms) => {
+                setRooms(rooms);
+            });
     }, []);
 
     // const roomss = [
@@ -148,46 +149,47 @@ export function Home(setUserOn: any) {
     //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
     //     },
 
-        
+
     // ]
 
     return (
         <div>
             <div className="home">
-                <div className="rooms_section">
-                    {rooms.map((room :Room ) => (
-                        <div className="room" key={room.id}>
-                            <div
-                                className="room_images"
-                                style={{
-                                    backgroundImage: `url(${room.images})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                    width: "395px",
-                                    height: "269px",
-                                    borderRadius: "24px"
-                                }}
-                            ></div>
-                            <div>
-                                <div className="room_description">
-                                    {room.description}
-                                    <div className="room_review" >
-                                        <div className="room_review_star">
-                                            <Star />
+                <Link to={"/single-page"}>
+                    <div className="rooms_section">
+                        {rooms.map((room: Room) => (
+                            <div className="room" key={room.id}>
+                                <div
+                                    className="room_images"
+                                    style={{
+                                        backgroundImage: `url(${room.images})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        width: "395px",
+                                        height: "269px",
+                                        borderRadius: "24px"
+                                    }}
+                                ></div>
+                                <div>
+                                    <div className="room_description">
+                                        {room.description}
+                                        <div className="room_review" >
+                                            <div className="room_review_star">
+                                                <Star />
+                                            </div>
+                                            {room.review}
                                         </div>
-                                        {room.review}
                                     </div>
+
+                                </div>
+                                <div className="room_title">
+                                    {room.title}
                                 </div>
 
                             </div>
-                            <div className="room_title">
-                                {room.title}
-                            </div>
-
-                        </div>
-                    ))}
-                </div>
-
+                        ))}
+                    </div>
+                </Link>
             </div>
         </div>
     )
