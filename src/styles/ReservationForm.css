@@ -110,5 +110,62 @@
   font-size: 14px;
 }
 .reservation-last-child {
-  border-top: 2px solid #222222 !important  ;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-top: 1px solid rgb(221, 221, 221) !important;
+  margin-top: 4px;
+}
+.reserve-submit {
+  height: 48px !important;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  color: white;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    to right,
+    rgb(230, 30, 77) 0%,
+    rgb(227, 28, 95) 50%,
+    rgb(215, 4, 102) 100%
+  ) !important;
+}
+.reservation-cost-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 24px;
+  width: 100%;
+  height: 50px;
+}
+.reservation-cost-info > div {
+  font-family: Poppins;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reservation-cost-info > div > span {
+  font-family: Poppins;
+  text-decoration: underline;
+}
+.break-line {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  border: none;
+  height: 0.5px;
+  background-color: rgb(179, 178, 178);
+}
+.total-reservation-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: Poppins;
+  font-size: 20px;
 }

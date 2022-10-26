@@ -14,7 +14,10 @@ export function SignedIn({ userOn, setUserOn }: any) {
 
   return (
     <Routes>
-      <Route path="/reserve" element={<ReservationForm room={rooms[0]} />} />
+      <Route
+        path="/reserve/:roomId"
+        element={<ReservationForm userOn={userOn} />}
+      />
       <Route path="/profile" element={<ProfilePage userOn={userOn} />} />
       <Route index element={<Home rooms={rooms} />} />
     </Routes>
