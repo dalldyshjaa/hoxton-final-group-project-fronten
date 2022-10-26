@@ -16,151 +16,146 @@ export type Room = {
     images: string
 }
 
-
-
-
 export function Home(setUserOn: any) {
 
 
-    // const [rooms, setRooms] = useState([]);
+    const [rooms, setRooms] = useState([]);
 
-    // useEffect (() => {
-    //     fetch("http://localhost:5000/get-all-rooms")
-    //     .then((resp) => resp.json())
-    //     .then((rooms) => {
-    //         setRooms(rooms);
-    //     });
-    // }, []);
+    useEffect (() => {
+        fetch("http://localhost:5000/get-all-rooms")
+        .then((resp) => resp.json())
+        .then((rooms) => {
+            setRooms(rooms);
+        });
+    }, []);
 
-    const roomss = [
-        {
-            id: 1,
-            title: "Room 1",
-            price: "100",
-            guestsLimit: 2,
-            description: "Room 1 description",
-            rules: "Room 1 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 2,
-            title: "Room 2",
-            price: "200",
-            guestsLimit: 2,
-            description: "Room 2 description",
-            rules: "Room 2 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 3,
-            title: "Room 3",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 4,
-            title: "Room 3",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 5,
-            title: "Room 3",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 6,
-            title: "Room 3",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 7,
-            title: "Room 3",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 8,
-            title: "Room 3",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
-        {
-            id: 9,
-            title: "Bucharest  ",
-            price: "300",
-            guestsLimit: 2,
-            description: "Room 3 description",
-            rules: "Room 3 rules",
-            country: "Romania",
-            city: "Bucharest",
-            reviewsNr: 2,
-            review: 4,
-            images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
-        },
+    // const roomss = [
+    //     {
+    //         id: 1,
+    //         title: "Room 1",
+    //         price: "100",
+    //         guestsLimit: 2,
+    //         description: "Room 1 description",
+    //         rules: "Room 1 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 2,
+    //         title: "Room 2",
+    //         price: "200",
+    //         guestsLimit: 2,
+    //         description: "Room 2 description",
+    //         rules: "Room 2 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 3,
+    //         title: "Room 3",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 4,
+    //         title: "Room 3",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 5,
+    //         title: "Room 3",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 6,
+    //         title: "Room 3",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 7,
+    //         title: "Room 3",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 8,
+    //         title: "Room 3",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
+    //     {
+    //         id: 9,
+    //         title: "Bucharest  ",
+    //         price: "300",
+    //         guestsLimit: 2,
+    //         description: "Room 3 description",
+    //         rules: "Room 3 rules",
+    //         country: "Romania",
+    //         city: "Bucharest",
+    //         reviewsNr: 2,
+    //         review: 4,
+    //         images: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg"
+    //     },
 
         
-    ]
-
-
+    // ]
 
     return (
         <div>
             <div className="home">
                 <div className="rooms_section">
-                    {roomss.map((room) => (
+                    {rooms.map((room :Room ) => (
                         <div className="room" key={room.id}>
                             <div
                                 className="room_images"
