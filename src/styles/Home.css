@@ -1,0 +1,78 @@
+.rooms_section{
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    
+    align-items: center;
+    place-items: center;
+    padding-left:6rem ;
+    padding-right:6rem ;
+
+}
+
+@media screen and (min-width: 1480px) {
+    .rooms_section{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .rooms_section{
+        grid-template-columns: 1fr 1fr;
+    }
+ @media screen and (max-width : 1000px) {
+    .rooms_section{
+        grid-template-columns: 1fr;
+    }
+ }   
+}
+
+
+.room_description{
+    display: flex;
+    font-family: 'Montserrat';
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #828282;
+    padding: 1rem;
+    justify-self: start;
+
+    place-content: space-between;
+}
+.room_review{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.4rem;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #4F4F4F;
+}
+.room_review_star{
+    color : #EB5757;
+}
+
+.room_title{
+    display: flex;
+    justify-self: start;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left:16px;
+
+    color: #333333;
+}
+.room{
+    display: grid;
+    padding: 1rem;
+}
