@@ -3,29 +3,28 @@ import { useParams } from "react-router-dom";
 import { Star } from "../Icons";
 import { Room } from "../pages/Home";
 
-export function ReservationForm({ userOn }: any) {
-  const [room, setRoom] = useState<Room | null>(null);
+export function ReservationForm({
+  userOn,
+  setTotal,
+  room,
+  total,
+  nightPrice,
+}: any) {
+  // const [room, setRoom] = useState<Room | null>(null);
   const [days, setDays] = useState(1);
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
   const [guests, setGuests] = useState(1);
-  const params = useParams();
+  // const params = useParams();
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/single-room/${params.roomId}`)
-      .then((resp) => resp.json())
-      .then((room) => {
-        setRoom(room);
-        setTotal(Number(room.price.substring(1)) + 58);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/single-room/${params.roomId}`)
+  //     .then((resp) => resp.json())
+  //     .then((room) => {
+  //       setRoom(room);
+  //       setTotal(Number(room.price.substring(1)) + 58);
+  //     });
+  // }, []);
 
-  let nightPrice = 0;
-  if (!room) {
-    return <h1>Loading</h1>;
-  } else {
-    nightPrice = Number(room.price.substring(1));
-    console.log(nightPrice);
-  }
   return (
     <>
       {room && (

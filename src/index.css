@@ -1,5 +1,6 @@
 @import "./styles/SignedOut.css";
 @import "./styles/ReservationForm.css";
+@import "./styles/SinglePage.css";
 
 * {
   margin: 0px;
