@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { SignedIn } from "./pages/SignedIn";
 import { SignedOut } from "./pages/SignedOut";
-<<<<<<< HEAD
 import { Route, Routes, useNavigate } from "react-router-dom";
-=======
-import { Route, Routes } from "react-router-dom";
->>>>>>> aed016763a636cf01640c5d8354daea2c944fad8
 
 function App() {
   const [token, setToken] = useState(localStorage.token);

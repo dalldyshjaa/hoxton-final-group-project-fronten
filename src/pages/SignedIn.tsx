@@ -16,7 +16,7 @@ export function SignedIn({ userOn, setUserOn, SignOut }: any) {
   return (
     <Routes>
       <Route
-        path="/reserve/:roomId"
+        path="/single-page/:roomId"
         element={<SingleRoom userOn={userOn} SignOut={SignOut} />}
       />
       <Route

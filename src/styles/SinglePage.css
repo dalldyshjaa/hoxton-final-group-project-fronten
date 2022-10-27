@@ -6,6 +6,7 @@
 .desc-comment-container {
   display: flex;
   justify-content: center;
+  gap: 100px;
   align-items: center;
 }
 
@@ -70,6 +71,7 @@
 .comment {
   line-height: 24px;
   text-align: left;
+  word-break: break-all;
 }
 .save-button {
   margin: 10px;

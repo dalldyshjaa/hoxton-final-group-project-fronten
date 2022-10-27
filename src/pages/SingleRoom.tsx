@@ -43,11 +43,64 @@ export function SingleRoom({ userOn, SignOut }: any) {
         />
       )}
       <div className="single-page">
-        <div className="images-container">{/* Fotot e dhomes ktu  */}</div>
+        <div className="images-container">
+          {/* Fotot e dhomes ktu  */}
+          {!room.favorite ? (
+            <div
+              className="save-button"
+              onClick={() => {
+                setShowWishListModal(true);
+                // if (!room.favorite) {
+                //   fetch(
+                //     `http://localhost:5000/add-to-favorite/${room.id}/${userOn.id}`
+                //   );
+                // }
+              }}
+            >
+              <>
+                <NotSaved color="#222222" height="14px" />
+                Save
+              </>
+            </div>
+          ) : (
+            <div className="save-button">
+              <>
+                <Saved color="#FF385C" />
+                Saved
+              </>
+            </div>
+          )}
+        </div>
         <div className="desc-comment-container">
           <div>
             <div className="description">{/* Ktu desription  */}</div>
-            <div className="comments">{/* Ktu komentet */}</div>
+            <div className="comments">
+              {" "}
+              {room.comments.map((comment) => (
+                <div className="comment-user">
+                  <div className="user">
+                    <div className="username">
+                      <h3>{comment.author.fullName}</h3>
+                      <div className="date">
+                        {comment.assignedAt.substring(0, 10)}
+                      </div>
+                    </div>
+                    <div className="photo-profile">
+                      <div className="img">
+                        <img
+                          src={
+                            comment.author.profileImage
+                              ? comment.author.profileImage
+                              : "https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240"
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="comment">{comment.content}</div>
+                </div>
+              ))}
+            </div>
             <div
               className="header-profile-wrapper"
               onClick={() => {
@@ -95,31 +148,6 @@ export function SingleRoom({ userOn, SignOut }: any) {
             </div>
           </div>
           <aside className="form">
-            {!room.favorite ? (
-              <div
-                className="save-button"
-                onClick={() => {
-                  setShowWishListModal(true);
-                  // if (!room.favorite) {
-                  //   fetch(
-                  //     `http://localhost:5000/add-to-favorite/${room.id}/${userOn.id}`
-                  //   );
-                  // }
-                }}
-              >
-                <>
-                  <NotSaved color="#222222" height="14px" />
-                  Save
-                </>
-              </div>
-            ) : (
-              <div className="save-button">
-                <>
-                  <Saved color="#FF385C" />
-                  Saved
-                </>
-              </div>
-            )}
             <ReservationForm
               userOn={userOn}
               setTotal={setTotal}
@@ -128,8 +156,46 @@ export function SingleRoom({ userOn, SignOut }: any) {
               room={room}
             />
           </aside>
+          {/* //23 */}
         </div>
       </div>
     </>
   );
 }
+{
+  /* <div className="single-page">
+      // <div className="images-container">{/* Fotot e dhomes ktu  */
+}
+// <div className="desc-comment-container">
+//   <div>
+//     <div className="description">{/* Ktu desription  */}</div>
+//     <div className="comments">
+{
+  /* {room.comments.map((comment) => (
+              <div className="comment-user">
+                <div className="user">
+                  <div className="username">
+                    <h3>{comment.author.fullName}</h3>
+                    <div className="date">
+                      {comment.assignedAt.substring(0, 10)}
+                    </div>
+                  </div>
+                  <div className="photo-profile">
+                    <div className="img">
+                      <img
+                        src={
+                          comment.author.profileImage
+                            ? comment.author.profileImage
+                            : "https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240"
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="comment">{comment.content}</div>
+              </div>
+            ))} */
+}
+//     </div>
+//   </div>
+// </div> */}

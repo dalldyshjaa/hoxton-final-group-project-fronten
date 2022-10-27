@@ -173,7 +173,7 @@ export function Home({ setUserOn }: any) {
                   />
                 </ul>
                 <div>
-                  <Link to={`/single-page`}>
+                  <Link to={`/single-page/${room.id}`}>
                     <div className="room_description">
                       {room.city}, {room.country}
                       <div className="room_review">
@@ -187,7 +187,7 @@ export function Home({ setUserOn }: any) {
                 </div>
 
                 <div className="room_title">
-                  <Link to={`/single-page`}>{room.title}</Link>
+                  <Link to={`/single-page/${room.id}`}>{room.title}</Link>
                 </div>
               </div>
             ))}
