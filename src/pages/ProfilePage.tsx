@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Footer } from "../components/Footer";
 import { SaveModal } from "../components/SaveModal";
 import { Menu, Tick, Verified } from "../Icons";
 
@@ -159,6 +160,7 @@ export function ProfilePage({ userOn, SignOut }: any) {
             </aside>
             <section></section>
           </div>
+          <Footer />
         </>
       ) : null}
     </>
