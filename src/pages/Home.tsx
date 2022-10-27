@@ -4,6 +4,7 @@ import { Star, Search, Menu } from "../Icons";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 import "../styles/Home.css";
+import { SaveModal } from "../components/SaveModal";
 export type Room = {
   id: number;
   title: string;
@@ -111,6 +112,14 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
   return (
     <>
       {" "}
+      {showWishListModal && (
+        <SaveModal
+          userOn={userOn}
+          // room={room}
+          setShowWishListModal={setShowWishListModal}
+          // setRoom={setRoom}
+        />
+      )}
       <div>
         <div className="home">
           <div className="header">
