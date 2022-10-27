@@ -5,9 +5,10 @@
   margin-top: 530%;
   margin-left: -176px;
   padding: 8px 0px;
+  z-index: 400 !important;
 
   border-radius: 12px;
-  background-color: transparent;
+  background-color: white;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 }
 .menu-pop-up > div {
