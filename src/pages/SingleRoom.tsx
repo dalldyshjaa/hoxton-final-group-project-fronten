@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Footer } from "../components/Footer";
 import { ReservationForm } from "../components/ReservationForm";
 import { SaveModal } from "../components/SaveModal";
 import { Menu, More, NotSaved, Saved } from "../Icons";
@@ -186,6 +187,7 @@ export function SingleRoom({ userOn, SignOut }: any) {
           {/* //23 */}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

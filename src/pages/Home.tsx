@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Star, Search, Menu } from "../Icons";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
+import { Footer } from "../components/Footer";
 
 import "../styles/Home.css";
 import { SaveModal } from "../components/SaveModal";
@@ -259,7 +260,9 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
             ))} */}
           </div>
         </div>
+        
       </div>
+     <Footer />
     </>
   );
 }

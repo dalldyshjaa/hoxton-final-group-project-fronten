@@ -3,6 +3,7 @@ import "./App.css";
 import { SignedIn } from "./pages/SignedIn";
 import { SignedOut } from "./pages/SignedOut";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState(localStorage.token);
