@@ -42,6 +42,9 @@
     justify-self: start;
 
     place-content: space-between;
+    align-items: center;
+    margin-left: 2rem;
+    margin-right: 3rem;
 }
 .room_review{
     display: grid;
@@ -68,7 +71,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    margin-left:16px;
+    margin-left:3rem;
 
     color: #333333;
 }
@@ -76,3 +79,56 @@
     display: grid;
     padding: 1rem;
 }
+.rightArrow {
+    position: relative;
+    top: 0;
+    right:20px;
+    
+    
+    z-index: 1;
+    display: flex;
+    color: #ffffffe1;
+
+    justify-self: end;
+    align-self: center;
+    cursor: pointer;
+
+    user-select: none;
+
+  }
+  .leftArrow {
+    position: relative;
+    top: 0;
+    left:20px;
+    
+    z-index: 1;
+    display: flex;
+    color: #ffffffe1;
+    
+    justify-self: start;
+    align-self: center;
+    cursor: pointer;
+
+    user-select: none;
+  }
+  .slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
+  }
+  .list{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 2rem;
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
