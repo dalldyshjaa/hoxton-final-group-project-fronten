@@ -23,7 +23,10 @@ export function SignedIn({ userOn, setUserOn, SignOut }: any) {
         path="/profile/:userId"
         element={<ProfilePage userOn={userOn} SignOut={SignOut} />}
       />
-      <Route index element={<Home rooms={rooms} />} />
+      <Route
+        index
+        element={<Home rooms={rooms} userOn={userOn} SignOut={SignOut} />}
+      />
     </Routes>
   );
 }
