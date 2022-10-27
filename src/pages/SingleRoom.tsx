@@ -142,7 +142,12 @@ export function SingleRoom({ userOn, SignOut }: any) {
                         {comment.assignedAt.substring(0, 10)}
                       </div>
                     </div>
-                    <div className="photo-profile" >
+                    <div
+                      className="photo-profile"
+                      onClick={() => {
+                        navigate(`/profile/${comment.authorId}`);
+                      }}
+                    >
                       <div className="img">
                         <img
                           src={
