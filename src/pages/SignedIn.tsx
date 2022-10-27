@@ -4,7 +4,7 @@ import { ReservationForm } from "../components/ReservationForm";
 import { ProfilePage } from "./ProfilePage";
 import { Home } from "./Home";
 import { SingleRoom } from "./SingleRoom";
-export function SignedIn({ userOn, setUserOn }: any) {
+export function SignedIn({ userOn, setUserOn, SignOut }: any) {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -15,8 +15,14 @@ export function SignedIn({ userOn, setUserOn }: any) {
 
   return (
     <Routes>
-      <Route path="/reserve/:roomId" element={<SingleRoom userOn={userOn} />} />
-      <Route path="/profile" element={<ProfilePage userOn={userOn} />} />
+      <Route
+        path="/reserve/:roomId"
+        element={<SingleRoom userOn={userOn} SignOut={SignOut} />}
+      />
+      <Route
+        path="/profile/:userId"
+        element={<ProfilePage userOn={userOn} />}
+      />
       <Route index element={<Home rooms={rooms} />} />
     </Routes>
   );

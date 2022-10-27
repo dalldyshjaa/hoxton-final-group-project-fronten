@@ -1,9 +1,17 @@
 @import "./styles/SignedOut.css";
 @import "./styles/ReservationForm.css";
 @import "./styles/SinglePage.css";
+@import "./styles/Modal.css";
+@import "./styles/Random.css";
+@import "./styles/PopUp.css";
+@import "./styles/ProfilePage.css";
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+#root {
+  height: 100vh;
 }

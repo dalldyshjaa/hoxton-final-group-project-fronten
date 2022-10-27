@@ -1,0 +1,30 @@
+.header-profile-wrapper {
+  position: relative;
+
+  margin-right: 90px;
+  margin-top: 20px;
+  float: right;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5px 5px 5px 12px;
+
+  border: 1px solid #e2e2e2;
+  border-radius: 21px;
+
+  cursor: pointer;
+
+  width: 77px;
+  height: 42px;
+}
+.header-profile-wrapper:hover {
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+  transition: 0.5s;
+}
+.header-profile-image {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}

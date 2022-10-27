@@ -3,12 +3,19 @@ import logo from "./logo.svg";
 import "./App.css";
 import { SignedIn } from "./pages/SignedIn";
 import { SignedOut } from "./pages/SignedOut";
-import { Route, Routes } from "react-router-dom";
-
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useState(localStorage.token);
   const [userOn, setUserOn] = useState(null);
+
+  const navigate = useNavigate();
+
+  function SignOut() {
+    localStorage.token = "";
+    setUserOn(null);
+    navigate("/");
+  }
 
   useEffect(() => {
     if (token) {
@@ -30,14 +37,14 @@ function App() {
   return (
     <div className="App">
       {userOn ? (
-        <SignedIn userOn={userOn} setUserOn={setUserOn} />
+        <SignedIn userOn={userOn} setUserOn={setUserOn} SignOut={SignOut} />
       ) : (
         <SignedOut setUserOn={setUserOn} />
-       )}
+      )}
 
-       <Routes>
-          <Route path="/home" element={<SignedIn />} />
-       </Routes>
+      <Routes>
+        <Route path="/home" element={<SignedIn />} />
+      </Routes>
     </div>
   );
 }

@@ -1,3 +1,30 @@
 .single-page {
   height: 100vh;
 }
+.save-button {
+  margin: 10px;
+  margin-top: 0px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+
+  padding: 8px;
+
+  height: 34px;
+  width: fit-content;
+
+  text-decoration: underline;
+  font-family: Montserrat;
+  color: #222222;
+  cursor: pointer;
+
+  border-radius: 8px;
+}
+.save-button > svg {
+  margin-bottom: -1.5px;
+  height: 20px !important;
+  width: 20px !important;
+}
+.save-button:hover {
+  background-color: aliceblue;
+}
