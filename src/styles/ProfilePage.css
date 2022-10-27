@@ -10,6 +10,9 @@
   height: 100%;
 }
 .profile-main aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 1px solid #dddddd;
   border-radius: 12px;
   height: fit-content;
@@ -21,10 +24,14 @@
   width: 128px;
   height: 128px;
   border-radius: 50%;
+
+  margin: auto;
 }
 .update-photo-p {
   margin-top: 7px;
   margin-bottom: 30px;
+
+  text-align: center;
 
   font-family: Montserrat;
   font-weight: 600;
@@ -132,4 +139,35 @@
   justify-content: space-between;
   width: 1200px;
   height: 100%;
+}
+.profile-page-image-container {
+  width: 100%;
+
+  inset: 0;
+  margin: auto;
+
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+}
+.profile-main > section > h2 {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 30px;
+}
+.when-joined {
+  font-size: 15px;
+  font-family: sans-serif;
+  color: #8e8e8e;
+}
+.reviews-section > header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 60px;
+
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 30px;
 }

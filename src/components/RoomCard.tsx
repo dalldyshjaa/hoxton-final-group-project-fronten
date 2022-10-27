@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import { A, B, Close, LeftArrow, NotSaved, RightArrow } from "../Icons";
+import {
+  A,
+  B,
+  Close,
+  LeftArrow,
+  NotSaved,
+  ReviewStar,
+  RightArrow,
+} from "../Icons";
 import { SaveModal } from "./SaveModal";
 
 export function RoomCard({ room, userOn }: any) {
@@ -145,6 +153,18 @@ export function RoomCard({ room, userOn }: any) {
               navigate(`/single-page/${room.id}`);
             }}
           />
+        </div>
+        <div className="room-card-info">
+          <p>
+            {room.city}, {room.country}
+          </p>
+          <div>
+            <ReviewStar size="12px" /> {room.review}
+          </div>
+        </div>
+        <div className="room-title">{room.title}</div>
+        <div className="room-price">
+          <strong>{room.price}</strong> night
         </div>
       </div>
     </>

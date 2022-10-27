@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { SaveModal } from "../components/SaveModal";
-import { Menu, Tick, Verified } from "../Icons";
+import { Menu, ReviewStar, Tick, Verified } from "../Icons";
 
 export function ProfilePage({ userOn, SignOut }: any) {
   const [showImageInput, setShowImageInput] = useState(false);
@@ -12,6 +12,7 @@ export function ProfilePage({ userOn, SignOut }: any) {
 
   const [user, setUser] = useState(null);
   const [image, setImage] = useState("");
+  const [reviews, setReviews] = useState([]);
 
   const params = useParams();
 
@@ -95,7 +96,9 @@ export function ProfilePage({ userOn, SignOut }: any) {
           </div>
           <div className="profile-main">
             <aside>
-              <img src={image} alt="" className="profile-page-image" />
+              <div className="profile-page-image-container">
+                <img src={image} alt="" className="profile-page-image" />
+              </div>
               {user.id === userOn.id ? (
                 <>
                   {!showImageInput ? (
@@ -157,7 +160,15 @@ export function ProfilePage({ userOn, SignOut }: any) {
                 ) : null}
               </div>
             </aside>
-            <section></section>
+            <section>
+              <h2>Hi, I'm {user.fullName}</h2>
+              <p className="when-joined">Joined in 2022</p>
+              <div className="reviews-section">
+                <header>
+                  <ReviewStar size="16px" /> reviews
+                </header>
+              </div>
+            </section>
           </div>
         </>
       ) : null}

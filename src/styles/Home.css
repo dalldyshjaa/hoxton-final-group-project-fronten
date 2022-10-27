@@ -1,5 +1,8 @@
 .home {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 .header {
   display: flex;
@@ -19,6 +22,8 @@
   flex-wrap: wrap;
   gap: 25px;
 
+  max-width: 1200px;
+
   align-items: center;
   place-items: center;
 
@@ -26,14 +31,14 @@
   padding-top: 8rem;
 }
 .room-card {
-  height: 420px;
-  width: 310px;
+  height: 520px;
+  width: 410px;
 
   position: relative;
 }
 .room-card-image {
   width: 100%;
-  height: 271px;
+  height: 371px;
   border-radius: 10px;
 }
 .room-card-saved {
@@ -81,7 +86,32 @@
 .arrow-container:hover {
   opacity: 1;
 }
+.room-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  font-family: sans-serif;
+  font-weight: 500;
+
+  margin-top: 10px;
+}
+.room-card-info > div {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.room-title {
+  font-family: sans-serif;
+  color: #b1b1b1;
+  margin: 6px 0px;
+}
+.room-price {
+  font-family: sans-serif;
+}
+
+@media screen and (min-width: 1480px) {
+}
 .search {
   background-color: #ffffff;
   border: 1px solid #dddddd;
