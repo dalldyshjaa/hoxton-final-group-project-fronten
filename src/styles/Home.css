@@ -33,18 +33,24 @@
     font-family: 'Montserrat';
 
     font-style: normal;
+    
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
 
-    color: #828282;
+    
     padding: 1rem;
     justify-self: start;
 
     place-content: space-between;
     align-items: center;
+
     margin-left: 2rem;
     margin-right: 3rem;
+
+    text-align: center;
+
+    color: #828282;
 }
 .room_review{
     display: grid;
@@ -53,14 +59,19 @@
 
     font-family: 'Montserrat';
     font-style: normal;
+
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
+
+    align-items: center;
+    text-align: center;
 
     color: #4F4F4F;
 }
 .room_review_star{
     color : #EB5757;
+    
 }
 
 .room_title{
@@ -68,6 +79,8 @@
     justify-self: start;
     font-family: 'Montserrat';
     font-style: normal;
+    text-align: center;
+
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
