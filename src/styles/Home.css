@@ -1,147 +1,178 @@
-.rooms_section{
-    display: grid;
-    
-    grid-template-columns: 1fr 1fr 1fr;
-    
-    align-items: center;
-    place-items: center;
-    padding-left:6rem ;
-    padding-right:6rem ;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem 2rem 4rem;
+}
 
+.search {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0, 5%);
+  transition: box-shadow 0.2s ease;
+}
+
+.search input {
+  background-color: transparent;
+  border-radius: 4px;
+  height: 48px;
+  line-height: 18px;
+  border: none;
+  border-right: 1px solid #dddddd;
+  text-align: center;
+  font-weight: 600;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.search input::placeholder {
+  text-align: center;
+}
+
+.search-button {
+  all: unset;
+  padding: 0px 15px 0px 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rooms_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  place-items: center;
 }
 
 @media screen and (min-width: 1480px) {
-    .rooms_section{
-        grid-template-columns:1fr 1fr 1fr;
-    }
+  .rooms_section {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media screen and (max-width: 1500px) {
-    .rooms_section{
-        grid-template-columns: 1fr 1fr;
+  .rooms_section {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 1000px) {
+    .rooms_section {
+      grid-template-columns: 1fr;
     }
- @media screen and (max-width : 1000px) {
-    .rooms_section{
-        grid-template-columns: 1fr;
-    }
- }   
+  }
 }
 
+.room_description {
+  display: flex;
+  font-family: "Montserrat";
 
-.room_description{
-    display: flex;
-    font-family: 'Montserrat';
+  font-style: normal;
 
-    font-style: normal;
-    
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 
-    
-    padding: 1rem;
-    justify-self: start;
+  padding: 1rem;
+  justify-self: start;
 
-    place-content: space-between;
-    align-items: center;
+  place-content: space-between;
+  align-items: center;
 
-    margin-left: 2rem;
-    margin-right: 3rem;
+  margin-left: 2rem;
+  margin-right: 3rem;
 
-    text-align: center;
+  text-align: center;
 
-    color: #828282;
+  color: #828282;
 }
-.room_review{
-    display: grid;
-    grid-auto-flow: column;
-    gap: 0.4rem;
+.room_review {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.4rem;
 
-    font-family: 'Montserrat';
-    font-style: normal;
+  font-family: "Montserrat";
+  font-style: normal;
 
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 
-    align-items: center;
-    text-align: center;
+  align-items: center;
+  text-align: center;
 
-    color: #4F4F4F;
+  color: #4f4f4f;
 }
-.room_review_star{
-    color : #EB5757;
-    
+.room_review_star {
+  color: #eb5757;
 }
 
-.room_title{
-    display: flex;
-    justify-self: start;
-    font-family: 'Montserrat';
-    font-style: normal;
-    text-align: center;
+.room_title {
+  display: flex;
+  justify-self: start;
+  font-family: "Montserrat";
+  font-style: normal;
+  text-align: center;
 
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    margin-left:3rem;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 3rem;
 
-    color: #333333;
+  color: #333333;
 }
-.room{
-    display: grid;
-    padding: 1rem;
+.room {
+  display: grid;
+  padding: 1rem;
 }
 .rightArrow {
-    position: relative;
-    top: 0;
-    right:20px;
-    
-    
-    z-index: 1;
-    display: flex;
-    color: #ffffffe1;
+  position: relative;
+  top: 0;
+  right: 20px;
 
-    justify-self: end;
-    align-self: center;
-    cursor: pointer;
+  z-index: 1;
+  display: flex;
+  color: #ffffffe1;
 
-    user-select: none;
+  justify-self: end;
+  align-self: center;
+  cursor: pointer;
 
-  }
-  .leftArrow {
-    position: relative;
-    top: 0;
-    left:20px;
-    
-    z-index: 1;
-    display: flex;
-    color: #ffffffe1;
-    
-    justify-self: start;
-    align-self: center;
-    cursor: pointer;
+  user-select: none;
+}
+.leftArrow {
+  position: relative;
+  top: 0;
+  left: 20px;
 
-    user-select: none;
-  }
-  .slide {
-    opacity: 0;
-    transition-duration: 1s ease;
-  }
-  .slide.active {
-    opacity: 1;
-    transition-duration: 1s;
-    transform: scale(1.08);
-  }
-  .list{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0rem 2rem;
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-    color: #333;
-  }
+  z-index: 1;
+  display: flex;
+  color: #ffffffe1;
+
+  justify-self: start;
+  align-self: center;
+  cursor: pointer;
+
+  user-select: none;
+}
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
+}
+.list {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 2rem;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}

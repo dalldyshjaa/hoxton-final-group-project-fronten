@@ -29,7 +29,32 @@ export function SingleRoom({ userOn }: any) {
       <div className="desc-comment-container">
         <div>
           <div className="description">{/* Ktu desription  */}</div>
-          <div className="comments">{/* Ktu komentet */}</div>
+          <div className="comments">
+            {room.comments.map((comment) => (
+              <div className="comment-user">
+                <div className="user">
+                  <div className="username">
+                    <h3>{comment.author.fullName}</h3>
+                    <div className="date">
+                      {comment.assignedAt.substring(0, 10)}
+                    </div>
+                  </div>
+                  <div className="photo-profile">
+                    <div className="img">
+                      <img
+                        src={
+                          comment.author.profileImage
+                            ? comment.author.profileImage
+                            : "https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240"
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="comment">{comment.content}</div>
+              </div>
+            ))}
+          </div>
         </div>
         <aside className="form">
           <ReservationForm

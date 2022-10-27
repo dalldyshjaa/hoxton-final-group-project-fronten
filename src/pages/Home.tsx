@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Star } from "../Icons";
+import { Star, Search } from "../Icons";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 import "../styles/Home.css";
@@ -34,7 +34,7 @@ export type Image = {
 
 // }}
 
-export function Home(setUserOn: any) {
+export function Home({ setUserOn }: any) {
   const [rooms, setRooms] = useState([]);
   const [current, setCurrent] = useState(0);
 
@@ -45,6 +45,21 @@ export function Home(setUserOn: any) {
         setRooms(rooms);
       });
   }, []);
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+
+    let location = event.target.location.value;
+    let guests = Number(event.target.guests.value);
+
+    const roomsCopy = structuredClone(rooms);
+
+    const filteredRooms = roomsCopy.filter(
+      (room: Room) =>
+        location === (room.country || room.city) && guests <= room.guestsLimit
+    );
+    setRooms(filteredRooms);
+  }
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -57,6 +72,30 @@ export function Home(setUserOn: any) {
   return (
     <div>
       <div className="home">
+        <div className="header">
+          <div className="logo">
+            <img src="logo.png" alt="logo" />
+          </div>
+          <div className="search">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="location"
+                placeholder="Add location"
+                required
+              />
+              <input
+                type="text"
+                name="guests"
+                placeholder="Add guests"
+                required
+              />
+              <button className="search-button">
+                <Search />
+              </button>
+            </form>
+          </div>
+        </div>
         <div className="rooms_section">
           {rooms.map((room: Room) => (
             <div className="room" key={room.id}>
@@ -95,7 +134,7 @@ export function Home(setUserOn: any) {
               <div>
                 <Link to={`/single-page`}>
                   <div className="room_description">
-                    {room.city}
+                    {room.city}, {room.country}
                     <div className="room_review">
                       <div className="room_review_star">
                         <Star />
