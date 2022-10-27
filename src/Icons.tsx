@@ -569,3 +569,80 @@ export function Tick() {
     </svg>
   );
 }
+
+export function LeftArrow() {
+  return (
+    <svg
+      stroke="currentColor"
+      fill="#222222"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="12px"
+      width="12px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+      ></path>
+    </svg>
+  );
+}
+export function RightArrow() {
+  return (
+    <svg
+      stroke="currentColor"
+      fill="#222222"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="12px"
+      width="12px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+      ></path>
+    </svg>
+  );
+}
+export function A() {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      fill="rgba(0, 0, 0, 0.5)"
+      role="presentation"
+      focusable="false"
+      height="24px"
+      width="24px"
+      stroke="white"
+      strokeWidth="2"
+      // style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: var(--f-mkcy-f); stroke-width: 2; overflow: visible;"
+      style={{ display: "block", overflow: "visible", opacity: "0.96" }}
+    >
+      <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+    </svg>
+  );
+}
+export function B() {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="presentation"
+      fill="#FF385C"
+      focusable="false"
+      height="24px"
+      width="24px"
+      stroke="white"
+      strokeWidth="2"
+      // style="display: block; fill: var(--ihf-tp-q); height: 24px; width: 24px; stroke: var(--f-mkcy-f); stroke-width: 2; overflow: visible;"
+      style={{ display: "block", overflow: "visible", opacity: "0.96" }}
+    >
+      <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+    </svg>
+  );
+}

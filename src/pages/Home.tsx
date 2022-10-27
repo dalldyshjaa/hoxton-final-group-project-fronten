@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 
 import "../styles/Home.css";
 import { SaveModal } from "../components/SaveModal";
+import { RoomCard } from "../components/RoomCard";
 export type Room = {
   id: number;
   title: string;
@@ -32,6 +33,7 @@ export type Image = {
 
 export function Home({ userOn, setUserOn, SignOut }: any) {
   const [rooms, setRooms] = useState([]);
+  const [roomsToShow, setRoomsToShow] = useState([]);
   //make a current count with id
   const [current, setCurrent] = useState(0);
   const [showMenuPopUp, setShowMenuPopUp] = useState(false);
@@ -39,13 +41,15 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
 
   // ]
 
+  let defaultRooms: Room[];
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/get-all-rooms")
+    fetch(`http://localhost:5000/get-all-rooms/${userOn.id}`)
       .then((resp) => resp.json())
       .then((rooms) => {
         setRooms(rooms);
+        setRoomsToShow(rooms);
       });
   }, []);
 
@@ -54,14 +58,20 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
 
     let location = event.target.location.value;
     let guests = Number(event.target.guests.value);
+    console.log(location, guests);
 
+    if (!(location || guests)) {
+      setRoomsToShow(structuredClone(rooms));
+      return;
+    }
     const roomsCopy = structuredClone(rooms);
 
     const filteredRooms = roomsCopy.filter(
       (room: Room) =>
-        location === (room.country || room.city) && guests <= room.guestsLimit
+        location === room.country ||
+        (location === room.city && guests <= room.guestsLimit)
     );
-    setRooms(filteredRooms);
+    setRoomsToShow(filteredRooms);
   }
 
   const prevSlide = () => {
@@ -124,23 +134,18 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
       <div>
         <div className="home">
           <div className="header">
-            <div className="logo">
+            <div
+              className="logo"
+              onClick={() => {
+                setRoomsToShow(rooms);
+              }}
+            >
               <img src="logo.png" alt="logo" />
             </div>
             <div className="search">
               <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="location"
-                  placeholder="Add location"
-                  required
-                />
-                <input
-                  type="text"
-                  name="guests"
-                  placeholder="Add guests"
-                  required
-                />
+                <input type="text" name="location" placeholder="Add location" />
+                <input type="text" name="guests" placeholder="Add guests" />
                 <button className="search-button">
                   <Search />
                 </button>
@@ -193,7 +198,10 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
             </div>
           </div>
           <div className="rooms_section">
-            {rooms.map((room: Room) => (
+            {roomsToShow.map((room) => (
+              <RoomCard room={room} userOn={userOn} />
+            ))}
+            {/* {rooms.map((room: Room) => (
               <div className="room" key={room.id}>
                 <ul className="list">
                   <BsArrowLeftCircle
@@ -216,7 +224,7 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
                                 width: "395px",
-                                height: "395px",
+                                height: "269px",
                                 borderRadius: "24px",
                                 backgroundRepeat: "no-repeat",
                               }}
@@ -236,7 +244,9 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
                     <div className="room_description">
                       {room.city}, {room.country}
                       <div className="room_review">
-                        <Star />
+                        <div className="room_review_star">
+                          <Star />
+                        </div>
                         {room.review}
                       </div>
                     </div>
@@ -244,15 +254,10 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
                 </div>
 
                 <div className="room_title">
-                  <Link to={`/single-page/${room.id}`}>
-                    {room.title}
-                    <h3 className="room_price">
-                      {room.price} <span>night</span>
-                    </h3>
-                    </Link>
+                  <Link to={`/single-page/${room.id}`}>{room.title}</Link>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
         
