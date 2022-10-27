@@ -9,6 +9,7 @@ export function SingleRoom({ userOn, SignOut }: any) {
   const [room, setRoom] = useState<Room | null>(null);
   const [total, setTotal] = useState(0);
   const [showWishListModal, setShowWishListModal] = useState(false);
+  const [favorite, setFavorite] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,6 +24,15 @@ export function SingleRoom({ userOn, SignOut }: any) {
       .then((room) => {
         setRoom(room);
         setTotal(Number(room.price.substring(1)) + 58);
+      });
+    fetch(`http://localhost:5000/is-it-saved/${params.roomId}/${userOn.id}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.error) {
+          setFavorite(false);
+        } else {
+          setFavorite(true);
+        }
       });
   }, []);
   let nightPrice = 0;
@@ -102,7 +112,7 @@ export function SingleRoom({ userOn, SignOut }: any) {
       <div className="single-page">
         <div className="images-container">
           {/* Fotot e dhomes ktu  */}
-          {!room.favorite ? (
+          {!favorite ? (
             <div
               className="save-button"
               onClick={() => {

@@ -40,3 +40,17 @@
   padding-top: 8px;
   font-weight: 500;
 }
+.add-to-wishlist-pop-up {
+  position: absolute;
+  min-width: 240px;
+  background-color: yellow;
+  margin-left: -176px;
+  margin-top: 30px;
+  padding: 8px 0px;
+  z-index: 600 !important;
+  height: 30px;
+
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}

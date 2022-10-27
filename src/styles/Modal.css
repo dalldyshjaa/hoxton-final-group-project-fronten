@@ -144,6 +144,9 @@
   font-size: 14px;
   color: #b8b8b8;
 }
+.add-to-wish-list-modal {
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
 .add-to-wish-list-modal-main {
   border-bottom: 1px solid rgb(235, 235, 235);
 }
@@ -153,7 +156,7 @@
 }
 .add-to-wishlist-button-wrapper button {
   width: 100%;
-  background-color: #dcdcdc;
+  background-color: #222222;
   border: none;
   outline: none;
   border-radius: 8px;
