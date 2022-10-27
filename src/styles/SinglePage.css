@@ -1,5 +1,75 @@
 .single-page {
   height: 100vh;
+  padding-top: 5rem;
+}
+
+.desc-comment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comments {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 40px;
+}
+
+.comment-user {
+  margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+.user {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+  align-items: center;
+  text-align: left;
+}
+
+.username {
+  margin-left: 12px;
+}
+
+.date {
+  color: #717171;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.photo-profile {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgb(221, 221, 221);
+}
+
+.img {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 100%;
+  width: 100%;
+  min-height: 1px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.img img {
+  object-fit: cover;
+  vertical-align: bottom;
+  height: 100%;
+  width: 100%;
+  position: static;
+}
+
+.comment {
+  line-height: 24px;
+  text-align: left;
 }
 .save-button {
   margin: 10px;
