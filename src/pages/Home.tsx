@@ -157,7 +157,7 @@ export function Home({ setUserOn }: any) {
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
                                 width: "395px",
-                                height: "269px",
+                                height: "395px",
                                 borderRadius: "24px",
                                 backgroundRepeat: "no-repeat",
                               }}
@@ -177,9 +177,7 @@ export function Home({ setUserOn }: any) {
                     <div className="room_description">
                       {room.city}, {room.country}
                       <div className="room_review">
-                        <div className="room_review_star">
-                          <Star />
-                        </div>
+                        <Star />
                         {room.review}
                       </div>
                     </div>
@@ -187,7 +185,12 @@ export function Home({ setUserOn }: any) {
                 </div>
 
                 <div className="room_title">
-                  <Link to={`/single-page/${room.id}`}>{room.title}</Link>
+                  <Link to={`/single-page/${room.id}`}>
+                    {room.title}
+                    <h3 className="room_price">
+                      {room.price} <span>night</span>
+                    </h3>
+                    </Link>
                 </div>
               </div>
             ))}
