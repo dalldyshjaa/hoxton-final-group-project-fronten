@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Close, Plus } from "../Icons";
 
 export function SaveModal({
@@ -15,6 +16,8 @@ export function SaveModal({
       .then((resp) => resp.json())
       .then((wishlist) => setWishlist(wishlist));
   }, [showForm]);
+
+  const navigate = useNavigate();
 
   type Room = {
     image: String;
@@ -54,7 +57,12 @@ export function SaveModal({
               {wishList.map((room: Room) => (
                 <>
                   {/* @ts-ignore  */}
-                  <div key={room.id}>
+                  <div
+                    key={room.id}
+                    onClick={() => {
+                      navigate(`/single-page/${room.roomId}`);
+                    }}
+                  >
                     <img
                       //   @ts-ignore
                       src={room.image}
