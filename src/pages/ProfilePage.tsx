@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Tick, Verified } from "../Icons";
+import { useNavigate, useParams } from "react-router-dom";
+import { SaveModal } from "../components/SaveModal";
+import { Menu, Tick, Verified } from "../Icons";
 
-export function ProfilePage({ userOn }: any) {
+export function ProfilePage({ userOn, SignOut }: any) {
   const [showImageInput, setShowImageInput] = useState(false);
+  const [showMenuPopUp, setShowMenuPopUp] = useState(false);
+  const [showWishListModal, setShowWishListModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
   const [image, setImage] = useState("");
@@ -23,7 +28,71 @@ export function ProfilePage({ userOn }: any) {
     <>
       {user ? (
         <>
-          {" "}
+          {showWishListModal && (
+            <SaveModal
+              userOn={userOn}
+              // room={room}
+              setShowWishListModal={setShowWishListModal}
+              // setRoom={setRoom}
+            />
+          )}{" "}
+          <div className="profile-page-header">
+            <div>
+              <div
+                className="profile-page-header-logo-wrapper"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Logo
+              </div>
+              <div
+                className="header-profile-wrapper"
+                onClick={() => {
+                  setShowMenuPopUp(!showMenuPopUp);
+                }}
+              >
+                <Menu />
+                <img
+                  src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+                  alt=""
+                  className="header-profile-image"
+                />
+                {showMenuPopUp ? (
+                  <div className="menu-pop-up">
+                    <div className="menu-pop-up-top">
+                      <div>Messages</div>
+                      <div
+                        onClick={() => {
+                          setShowWishListModal(true);
+                        }}
+                      >
+                        Wishlist
+                      </div>
+                      <div>Reservations</div>
+                      <div
+                        onClick={() => {
+                          navigate(`/profile/${userOn.id}`);
+                        }}
+                      >
+                        Profile
+                      </div>
+                    </div>
+                    <div className="menu-pop-up-bottom">
+                      <div>Help</div>
+                      <div
+                        onClick={() => {
+                          SignOut();
+                        }}
+                      >
+                        Log out
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </div>
           <div className="profile-main">
             <aside>
               <img src={image} alt="" className="profile-page-image" />

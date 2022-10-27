@@ -3,10 +3,11 @@
   justify-content: center;
   gap: 80px;
 
-  margin-top: 50px;
+  padding-top: 130px;
 }
 .profile-main section {
   width: 680px;
+  height: 100%;
 }
 .profile-main aside {
   border: 1px solid #dddddd;
@@ -114,4 +115,21 @@
   border-radius: 5px;
 
   outline: none;
+}
+.profile-page-header {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1.5px solid rgb(235, 235, 235);
+  background-color: white;
+  z-index: 100;
+}
+.profile-page-header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1200px;
+  height: 100%;
 }

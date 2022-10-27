@@ -37,17 +37,19 @@ export function SaveModal({
             <div className="save-modal-head-empty"></div>
           </div>
           <div className="save-modal-main">
-            <div
-              className="create-new-wishlist-button"
-              onClick={() => {
-                setShowForm(true);
-              }}
-            >
-              <button>
-                <Plus color="#222222" height="40px" />
-              </button>
-              <p className="main-text">Create new wishlist</p>
-            </div>
+            {room && (
+              <div
+                className="create-new-wishlist-button"
+                onClick={() => {
+                  setShowForm(true);
+                }}
+              >
+                <button>
+                  <Plus color="#222222" height="40px" />
+                </button>
+                <p className="main-text">Create new wishlist</p>
+              </div>
+            )}
             <>
               {wishList.map((room: Room) => (
                 <>

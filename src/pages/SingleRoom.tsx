@@ -101,51 +101,6 @@ export function SingleRoom({ userOn, SignOut }: any) {
                 </div>
               ))}
             </div>
-            <div
-              className="header-profile-wrapper"
-              onClick={() => {
-                setShowMenuPopUp(!showMenuPopUp);
-              }}
-            >
-              <Menu />
-              <img
-                src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
-                alt=""
-                className="header-profile-image"
-              />
-              {showMenuPopUp ? (
-                <div className="menu-pop-up">
-                  <div className="menu-pop-up-top">
-                    <div>Messages</div>
-                    <div
-                      onClick={() => {
-                        setShowWishListModal(true);
-                      }}
-                    >
-                      Wishlist
-                    </div>
-                    <div>Reservations</div>
-                    <div
-                      onClick={() => {
-                        navigate("/profile");
-                      }}
-                    >
-                      Profile
-                    </div>
-                  </div>
-                  <div className="menu-pop-up-bottom">
-                    <div>Help</div>
-                    <div
-                      onClick={() => {
-                        SignOut();
-                      }}
-                    >
-                      Log out
-                    </div>
-                  </div>
-                </div>
-              ) : null}
-            </div>
           </div>
           <aside className="form">
             <ReservationForm
