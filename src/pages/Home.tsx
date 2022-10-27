@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Star, Search } from "../Icons";
+import { Link, useNavigate } from "react-router-dom";
+import { Star, Search, Menu } from "../Icons";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 import "../styles/Home.css";
@@ -28,12 +28,16 @@ export type Image = {
 // export function Home(setUserOn: any) {
 //   const [rooms, setRooms] = useState([]);
 
-export function Home({ setUserOn }: any) {
+export function Home({ userOn, setUserOn, SignOut }: any) {
   const [rooms, setRooms] = useState([]);
   //make a current count with id
   const [current, setCurrent] = useState(0);
+  const [showMenuPopUp, setShowMenuPopUp] = useState(false);
+  const [showWishListModal, setShowWishListModal] = useState(false);
 
   // ]
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/get-all-rooms")
@@ -132,6 +136,51 @@ export function Home({ setUserOn }: any) {
                 </button>
               </form>
             </div>
+            <div
+              className="header-profile-wrapper"
+              onClick={() => {
+                setShowMenuPopUp(!showMenuPopUp);
+              }}
+            >
+              <Menu />
+              <img
+                src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+                alt=""
+                className="header-profile-image"
+              />
+              {showMenuPopUp ? (
+                <div className="menu-pop-up">
+                  <div className="menu-pop-up-top">
+                    <div>Messages</div>
+                    <div
+                      onClick={() => {
+                        setShowWishListModal(true);
+                      }}
+                    >
+                      Wishlist
+                    </div>
+                    <div>Reservations</div>
+                    <div
+                      onClick={() => {
+                        navigate(`/profile/${userOn.id}`);
+                      }}
+                    >
+                      Profile
+                    </div>
+                  </div>
+                  <div className="menu-pop-up-bottom">
+                    <div>Help</div>
+                    <div
+                      onClick={() => {
+                        SignOut();
+                      }}
+                    >
+                      Log out
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
           <div className="rooms_section">
             {rooms.map((room: Room) => (
@@ -148,7 +197,7 @@ export function Home({ setUserOn }: any) {
                     >
                       {index == current && (
                         <div>
-                          <Link to={`/single-page`}>
+                          <Link to={`/single-page/${room.id}`}>
                             <div
                               className="room_image"
                               key={images.id}

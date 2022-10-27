@@ -44,7 +44,7 @@ export function ProfilePage({ userOn, SignOut }: any) {
                   navigate("/");
                 }}
               >
-                Logo
+                <img src="/logo.png" alt="Logo" />
               </div>
               <div
                 className="header-profile-wrapper"

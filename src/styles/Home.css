@@ -67,8 +67,6 @@
 }
 
 .room_description {
-
-
   display: flex;
   font-family: "Montserrat";
 
@@ -136,7 +134,6 @@
   top: 0;
   right: 35px;
   font-size: 40px;
-  
 
   z-index: 1;
   display: flex;
