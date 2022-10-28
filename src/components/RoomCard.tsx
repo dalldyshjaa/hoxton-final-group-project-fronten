@@ -159,7 +159,7 @@ export function RoomCard({ room, userOn }: any) {
             {room.city}, {room.country}
           </p>
           <div>
-            <ReviewStar size="12px" /> {room.review}
+            <ReviewStar size="12px" /> {room.stats.percentage.toFixed(1)}
           </div>
         </div>
         <div className="room-title">{room.title}</div>

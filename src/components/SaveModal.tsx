@@ -80,7 +80,7 @@ export function SaveModal({
         <form
           className="add-to-wish-list-modal"
           onSubmit={(e) => {
-            e.preventDefault();
+            // e.preventDefault();
             // @ts-ignore
             if (!e.target.name.value) {
               alert("type something");

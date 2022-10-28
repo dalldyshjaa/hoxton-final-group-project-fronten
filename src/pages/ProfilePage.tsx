@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { SaveModal } from "../components/SaveModal";
-import { Menu, ReviewStar, Tick, Verified } from "../Icons";
+import { SingleReservation } from "../components/SingleReservation";
+import { Logo, Menu, ReviewStar, Tick, Verified } from "../Icons";
 
 export function ProfilePage({ userOn, SignOut }: any) {
   const [showImageInput, setShowImageInput] = useState(false);
@@ -14,6 +15,8 @@ export function ProfilePage({ userOn, SignOut }: any) {
   const [user, setUser] = useState(null);
   const [image, setImage] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [reservations, setReservations] = useState([]);
 
   const params = useParams();
 
@@ -25,6 +28,23 @@ export function ProfilePage({ userOn, SignOut }: any) {
         setImage(user.profileImage);
       });
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/get-reviewss/${user.id}`)
+        .then((resp) => resp.json())
+        .then((reviews) => {
+          setReviews(reviews);
+          setTotal(reviews.total);
+          console.log(reviews.reviews);
+        });
+      fetch(`http://localhost:5000/get-user-reservations/${userOn.id}`)
+        .then((resp) => resp.json())
+        .then((reservation) => setReservations(reservation));
+    }
+  }, [user]);
+
+  // @ts-ignore
 
   return (
     <>
@@ -46,7 +66,7 @@ export function ProfilePage({ userOn, SignOut }: any) {
                   navigate("/");
                 }}
               >
-                <img src="/logo.png" alt="Logo" />
+                <Logo />
               </div>
               <div
                 className="header-profile-wrapper"
@@ -56,7 +76,11 @@ export function ProfilePage({ userOn, SignOut }: any) {
               >
                 <Menu />
                 <img
-                  src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+                  src={
+                    userOn.profileImage
+                      ? userOn.profileImage
+                      : "https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+                  }
                   alt=""
                   className="header-profile-image"
                 />
@@ -166,12 +190,57 @@ export function ProfilePage({ userOn, SignOut }: any) {
               <p className="when-joined">Joined in 2022</p>
               <div className="reviews-section">
                 <header>
-                  <ReviewStar size="16px" /> reviews
+                  <ReviewStar size="16px" /> {total + " reviews"}
                 </header>
+                {total ? (
+                  <>
+                    <div className="reviews">
+                      {reviews.reviews.map((review) => (
+                        <div className="single-review">
+                          <div className="single-review-top">
+                            <h5>{review.room.title}</h5>
+                            <img
+                              className="single-review-room-image"
+                              src={review.room.images[0].image}
+                              alt=""
+                            />
+                          </div>
+                          <div className="review-content">{review.content}</div>
+                          <div className="review-author">
+                            <div>
+                              <img
+                                src={review.user.profileImage}
+                                className="review-author-profile"
+                                alt=""
+                              />
+                              <h4>{review.user.fullName}</h4>
+                            </div>
+                            <div></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : null}
               </div>
+              {reservations.length && user.id === userOn.id ? (
+                <>
+                  <div className="reservations-section">
+                    <header>Reservations</header>
+                    <div className="reservations">
+                      {reservations.map((reservation) => (
+                        <SingleReservation
+                          navigate={navigate}
+                          reservation={reservation}
+                          userOn={userOn}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : null}
             </section>
           </div>
-          <Footer />
         </>
       ) : null}
     </>

@@ -167,7 +167,180 @@
 
   margin-top: 60px;
 
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 25px;
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+  margin-top: 30px;
+}
+.single-review-room-image {
+  width: 70px;
+  height: 48px;
+  border-radius: 8px;
+}
+.single-review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   font-family: sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+}
+.review-content {
+  margin-top: 15px;
+  font-family: Poppins;
+  color: #222222;
+  max-height: 93px;
+  word-wrap: break-word;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+.review-author {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.review-author > div {
+  font-family: Montserrat;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.review-author-profile {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+}
+.reservations-section {
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+.reservations-section > header {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+.reservations {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  margin-bottom: 100px;
+}
+.single-reservation-image {
+  /* width: 200px; */
+  max-width: 230px;
+  border-radius: 10px;
+  max-height: 170px;
+}
+.single-reservation {
+  display: flex;
+  gap: 30px;
+  cursor: pointer;
+}
+.single-reservation > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.single-reservation > div > h3 {
+  font-family: Poppins;
   font-weight: 500;
-  font-size: 30px;
+  color: #222222;
+
+  overflow: hidden;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+}
+.single-reservation > div > div {
+  overflow: hidden;
+
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #222222;
+}
+.single-reservation-price {
+  font-family: Montserrat;
+  font-weight: 700;
+  padding: 5px 15px;
+  background-color: tomato;
+  color: white;
+  width: fit-content;
+}
+.single-reservation-add-review {
+  padding: 5px 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #8e8e8e;
+  color: white;
+  margin-right: 30px;
+}
+.single-reservation-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 150px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+.add-review-form textarea {
+  width: 100%;
+  height: 90px;
+  outline: none;
+  padding: 5px;
+  resize: none;
+}
+.add-review-form > div {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  width: 100%;
+}
+.add-review-form > div > div {
+  display: flex;
+  align-items: center;
+  font-family: Poppins;
+}
+.add-review-form > div > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+  font-family: Poppins;
+  font-size: 19px;
+  padding: 5px 10px;
+
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+.stars-container {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.stars-container > div {
+  display: flex;
+  align-items: center;
+}
+.successfully-added {
+  color: green;
 }

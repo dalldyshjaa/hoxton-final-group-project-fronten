@@ -14,17 +14,25 @@ export function ReservationForm({
   const [days, setDays] = useState(1);
   // const [total, setTotal] = useState(0);
   const [guests, setGuests] = useState(1);
+  const [message, setMessage] = useState("");
+  const [color, setColor] = useState("");
+  const [alreadyReserved, setAlreadyReserved] = useState(false);
   // const params = useParams();
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/check-if-reserved/${room.id}/${userOn.id}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setAlreadyReserved(data.check);
+      });
+  }, []);
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/single-room/${params.roomId}`)
-  //     .then((resp) => resp.json())
-  //     .then((room) => {
-  //       setRoom(room);
-  //       setTotal(Number(room.price.substring(1)) + 58);
-  //     });
-  // }, []);
+  //   fetch(`http://localhost:5000/check-if-reserved/${room.id}/${userOn.id}`).
+  //   then(resp => resp.json()).then(data => {setAlreadyReserved(data.check)})
 
+  //     });
+  // }, [])
+  //
   return (
     <>
       {room && (
@@ -41,8 +49,12 @@ export function ReservationForm({
               .then((data) => {
                 if (data.error) {
                   console.log(data.error, "asd");
+                  setMessage("Something went wrong");
+                  setColor("bad");
                 } else {
                   console.log(data.message, "123");
+                  setMessage("Room reserved successfully");
+                  setColor("good");
                 }
               });
           }}
@@ -56,9 +68,11 @@ export function ReservationForm({
               <span className="star-icon">
                 <Star />
               </span>
-              <span className="reserve-review-percentage">{room.review} ·</span>
+              <span className="reserve-review-percentage">
+                {room.stats.percentage.toFixed(1)} ·
+              </span>
               <button className="reserve-button">
-                <span>${room.reviewsNr} reviews</span>
+                <span>{room.stats.total} reviews</span>
               </button>
             </div>
           </div>
@@ -97,7 +111,15 @@ export function ReservationForm({
               />
             </div>
           </div>
-          <input type="submit" className="reserve-submit" value="Reserve" />
+          <input
+            type="submit"
+            className="reserve-submit"
+            value={alreadyReserved ? "Already Reserved" : "Reserve"}
+            disabled={alreadyReserved ? true : false}
+          />
+          {message && (
+            <span className={`reserve-message ${color}`}>{message}</span>
+          )}
           <div className="reservation-cost-info">
             <div>
               <span>

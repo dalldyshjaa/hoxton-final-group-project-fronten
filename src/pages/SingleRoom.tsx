@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
+import { RatingStars } from "../components/RatingStars";
 import { ReservationForm } from "../components/ReservationForm";
 import { SaveModal } from "../components/SaveModal";
-import { Menu, More, NotSaved, Saved } from "../Icons";
+import { Logo, Menu, More, NotSaved, ReviewStar, Saved } from "../Icons";
 import { Room } from "./Home";
 
 export function SingleRoom({ userOn, SignOut }: any) {
@@ -61,7 +62,7 @@ export function SingleRoom({ userOn, SignOut }: any) {
               navigate("/");
             }}
           >
-            <img src="/logo.png" alt="Logo" />
+            <Logo />
           </div>
           <div
             className="header-profile-wrapper"
@@ -71,7 +72,11 @@ export function SingleRoom({ userOn, SignOut }: any) {
           >
             <Menu />
             <img
-              src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+              src={
+                userOn.profileImage
+                  ? userOn.profileImage
+                  : "https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+              }
               alt=""
               className="header-profile-image"
             />
@@ -112,43 +117,101 @@ export function SingleRoom({ userOn, SignOut }: any) {
       </div>
       <div className="single-page">
         <div className="images-container">
+          <h2>{room.title}</h2>
+          <div className="images-container-top">
+            <aside>
+              <div className="asdasd">
+                <ReviewStar size="14px" />
+                <p>{room.stats.percentage.toFixed(1)} ·</p>
+              </div>
+              <p>{room.stats.total} reviews</p>
+            </aside>
+            {!favorite ? (
+              <div
+                className="save-button"
+                onClick={() => {
+                  setShowWishListModal(true);
+                  // if (!room.favorite) {
+                  //   fetch(
+                  //     `http://localhost:5000/add-to-favorite/${room.id}/${userOn.id}`
+                  //   );
+                  // }
+                }}
+              >
+                <>
+                  <NotSaved color="#222222" height="14px" />
+                  Save
+                </>
+              </div>
+            ) : (
+              <div className="save-button">
+                <>
+                  <Saved color="#FF385C" />
+                  Saved
+                </>
+              </div>
+            )}
+          </div>
+          <section>
+            <img
+              src={room.images[0].image}
+              alt=""
+              className="single-page-main-image"
+            />
+            <div className="single-page-secondary-images">
+              {room.images.map((image) => (
+                <>
+                  {image.image !== room.images[0].image && (
+                    <>
+                      <img
+                        src={image.image}
+                        alt=""
+                        className="single-page-secondary-image"
+                        style={{
+                          width: room.images.length === 2 ? "100%" : null,
+                          height: room.images.length === 2 ? "100%" : null,
+                        }}
+                      />
+                    </>
+                  )}
+                </>
+              ))}
+            </div>
+          </section>
           {/* Fotot e dhomes ktu  */}
-          {!favorite ? (
-            <div
-              className="save-button"
-              onClick={() => {
-                setShowWishListModal(true);
-                // if (!room.favorite) {
-                //   fetch(
-                //     `http://localhost:5000/add-to-favorite/${room.id}/${userOn.id}`
-                //   );
-                // }
-              }}
-            >
-              <>
-                <NotSaved color="#222222" height="14px" />
-                Save
-              </>
-            </div>
-          ) : (
-            <div className="save-button">
-              <>
-                <Saved color="#FF385C" />
-                Saved
-              </>
-            </div>
-          )}
         </div>
         <div className="desc-comment-container">
           <div>
-            <div className="description">{/* Ktu desription  */}</div>
+            <div className="single-page-host-info">
+              <h2
+                onClick={() => {
+                  navigate(`/profile/${room.host.id}`);
+                }}
+              >
+                {room.host.fullName}
+              </h2>
+              <img
+                src={room.host.profileImage}
+                alt=""
+                onClick={() => {
+                  navigate(`/profile/${room.host.id}`);
+                }}
+              />
+            </div>
+            <div className="single-page-description">{room.description}</div>
+
+            <h3 className="reviews-h3">Reviews ({room.reviews.length})</h3>
+
             <div className="comments">
               {" "}
-              {room.comments.map((comment) => (
+              {room.reviews.reverse().map((comment) => (
                 <div className="comment-user">
                   <div className="user">
                     <div className="username">
-                      <h3>{comment.author.fullName}</h3>
+                      <h3>
+                        {comment.user.fullName}{" "}
+                        <RatingStars count={comment.review} />
+                      </h3>
                       <div className="date">
                         {comment.assignedAt.substring(0, 10)}
                       </div>
@@ -156,16 +219,17 @@ export function SingleRoom({ userOn, SignOut }: any) {
                     <div
                       className="photo-profile"
                       onClick={() => {
-                        navigate(`/profile/${comment.authorId}`);
+                        navigate(`/profile/${comment.user.id}`);
                       }}
                     >
                       <div className="img">
                         <img
                           src={
-                            comment.author.profileImage
-                              ? comment.author.profileImage
+                            comment.user.profileImage
+                              ? comment.user.profileImage
                               : "https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240"
                           }
+                          className="comment-profile-image"
                         />
                       </div>
                     </div>
@@ -186,6 +250,15 @@ export function SingleRoom({ userOn, SignOut }: any) {
           </aside>
           {/* //23 */}
         </div>
+      </div>
+      <div className="iframe-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50753.70115509639!2d-121.99874030514822!3d37.33999148563857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb596e9e188fd%3A0x3b0d8391510688f0!2sApple%20Park!5e0!3m2!1sen!2s!4v1666961369199!5m2!1sen!2s"
+          width="1120px"
+          height="450"
+          style={{ border: "0" }}
+          loading="lazy"
+        ></iframe>
       </div>
       <Footer />
     </>

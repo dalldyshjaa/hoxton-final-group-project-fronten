@@ -114,7 +114,13 @@ export function Signup({ setUserOn }: any) {
             <div className="register-if-dont-have-acc">
               <p>
                 Already have an account?{" "}
-                <strong onClick={(e) => {}}>Login</strong>
+                <strong
+                  onClick={(e) => {
+                    navigate("/");
+                  }}
+                >
+                  Login
+                </strong>
               </p>
             </div>
           </main>

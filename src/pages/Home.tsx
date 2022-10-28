@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Star, Search, Menu } from "../Icons";
+import { Star, Search, Menu, Logo } from "../Icons";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { Footer } from "../components/Footer";
 
@@ -68,8 +68,8 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
 
     const filteredRooms = roomsCopy.filter(
       (room: Room) =>
-        location === room.country ||
-        (location === room.city && guests <= room.guestsLimit)
+        (location === room.country || location === room.city) &&
+        guests <= room.guestsLimit
     );
     setRoomsToShow(filteredRooms);
   }
@@ -140,7 +140,7 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
                 setRoomsToShow(rooms);
               }}
             >
-              <img src="logo.png" alt="logo" />
+              <Logo />
             </div>
             <div className="search">
               <form onSubmit={handleSubmit}>
@@ -159,7 +159,11 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
             >
               <Menu />
               <img
-                src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+                src={
+                  userOn.profileImage
+                    ? userOn.profileImage
+                    : "https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
+                }
                 alt=""
                 className="header-profile-image"
               />
@@ -174,7 +178,13 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
                     >
                       Wishlist
                     </div>
-                    <div>Reservations</div>
+                    <div
+                      onClick={() => {
+                        navigate(`/profile/${userOn.id}`);
+                      }}
+                    >
+                      Reservations
+                    </div>
                     <div
                       onClick={() => {
                         navigate(`/profile/${userOn.id}`);
@@ -260,9 +270,8 @@ export function Home({ userOn, setUserOn, SignOut }: any) {
             ))} */}
           </div>
         </div>
-        
       </div>
-     <Footer />
+      <Footer />
     </>
   );
 }

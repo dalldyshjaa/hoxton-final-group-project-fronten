@@ -70,7 +70,12 @@ main h2 {
   cursor: pointer;
   color: white;
   padding: 0px;
-  background: #2f80ed;
+  background: linear-gradient(
+    to right,
+    rgb(230, 30, 77) 0%,
+    rgb(227, 28, 95) 50%,
+    rgb(215, 4, 102) 100%
+  ) !important;
   border-radius: 8px;
   height: 38px;
   font-family: Noto Sans;
@@ -120,7 +125,7 @@ main h2 {
 
 .register-if-dont-have-acc strong {
   font-weight: lighter;
-  color: #2f80ed;
+  color: rgb(230, 30, 77);
   cursor: pointer;
 }
 
